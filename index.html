@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Open Sign Studio — Modern AI, made affordable</title>
+<meta name="description" content="Open Sign Studio builds affordable, modern AI for small businesses: chatbots, automation, and websites — without the agency price tag." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22512%22%20height%3D%22512%22%20viewBox%3D%220%200%20512%20512%22%3E%3Crect%20width%3D%22512%22%20height%3D%22512%22%20rx%3D%22113%22%20fill%3D%22%231FA463%22/%3E%3Ccircle%20cx%3D%22256.00%22%20cy%3D%22256.00%22%20r%3D%2298.96%22%20fill%3D%22none%22%20stroke%3D%22%23FBFBF7%22%20stroke-width%3D%2237.60%22/%3E%3Ccircle%20cx%3D%22256.00%22%20cy%3D%22256.00%22%20r%3D%2241.56%22%20fill%3D%22%23FFD23F%22/%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   OPEN SIGN STUDIO — brand tokens (from visual identity v1)
+   ============================================================ */
+:root{
+  --primary:   #1FA463;  /* green — primary actions, accents     */
+  --primary-d: #15784A;  /* primary dark — hovers, depth         */
+  --accent:    #FFD23F;  /* yellow — fills & highlights ONLY,    */
+                         /*          never carries text          */
+  --ink:       #15212B;  /* primary text, dark surfaces          */
+  --surface:   #FBFBF7;  /* page background                      */
+  --tint:      #E8F5EE;  /* soft green panels                    */
+  --line:      #DDE6DF;  /* hairlines                            */
+  --muted:     #5A6B62;  /* secondary text                       */
+
+  --display: "Poppins", system-ui, sans-serif;   /* headlines + wordmark */
+  --body:    "Work Sans", system-ui, sans-serif;  /* body */
+
+  --radius: 18px;
+  --max: 1180px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--surface);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img,svg{display:block}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 28px}
+
+h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.05;letter-spacing:-.02em}
+h1{font-weight:700}
+h2{font-size:clamp(2rem,4.6vw,3.3rem)}
+.eyebrow{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--primary-d);font-weight:600;font-family:var(--display)}
+
+/* yellow highlighter — accent as background, text stays ink */
+.mark-hl{background:linear-gradient(transparent 58%, var(--accent) 58% 92%, transparent 92%);padding:0 .08em}
+
+.btn{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--display);font-weight:600;font-size:1rem;padding:.9rem 1.5rem;border-radius:999px;border:1.5px solid transparent;cursor:pointer;transition:.25s ease}
+.btn-primary{background:var(--primary);color:#fff}
+.btn-primary:hover{background:var(--primary-d);transform:translateY(-2px);box-shadow:0 14px 28px -12px var(--primary)}
+.btn-ghost{background:transparent;border-color:var(--ink);color:var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:var(--surface)}
+
+/* ---------- logo mark ---------- */
+.mark{flex:none}
+.brand{display:flex;align-items:center;gap:.6rem;font-family:var(--display);font-weight:600;font-size:1.2rem;letter-spacing:-.02em;color:var(--ink)}
+
+/* ---------- NAV ---------- */
+nav{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:16px 28px;max-width:var(--max);margin:0 auto}
+.nav-scrolled{background:color-mix(in srgb,var(--surface) 85%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav-links{display:flex;gap:30px;align-items:center;font-size:.96rem;font-weight:500}
+.nav-links a{color:var(--muted);transition:color .2s}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{display:flex;gap:12px;align-items:center}
+@media(max-width:880px){.nav-links{display:none}.nav-cta .btn-ghost{display:none}}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;padding:74px 0 50px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;position:relative;z-index:2}
+.hero h1{font-size:clamp(2.6rem,6.2vw,5rem);margin-bottom:22px}
+.hero p.lede{font-size:1.18rem;color:var(--muted);max-width:33ch;margin-bottom:28px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.trust{margin-top:36px;display:flex;gap:30px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+.trust b{color:var(--ink);font-family:var(--display);font-weight:700;font-size:1.5rem;display:block;line-height:1}
+
+/* concentric "open sign" motif behind hero */
+.rings{position:absolute;right:-180px;top:-120px;width:620px;height:620px;z-index:0;opacity:.5;pointer-events:none}
+
+/* hero chat preview card */
+.hero-art{position:relative;z-index:2}
+.card-float{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px;box-shadow:0 30px 60px -34px rgba(21,33,43,.4)}
+.card-head{display:flex;align-items:center;gap:9px;padding-bottom:14px;margin-bottom:14px;border-bottom:1px solid var(--line);font-family:var(--display);font-weight:600;font-size:.95rem}
+.dot-live{width:8px;height:8px;border-radius:50%;background:var(--primary);box-shadow:0 0 0 3px var(--tint)}
+.chat-prev{display:flex;flex-direction:column;gap:11px}
+.bubble{padding:11px 15px;border-radius:14px;font-size:.92rem;max-width:86%}
+.bubble.bot{background:var(--tint);align-self:flex-start;border-bottom-left-radius:4px}
+.bubble.you{background:var(--primary);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.pill{position:absolute;top:-16px;right:14px;background:var(--ink);color:var(--surface);font-family:var(--display);font-size:.72rem;font-weight:600;padding:.45rem .8rem;border-radius:999px;z-index:3}
+@media(max-width:880px){.hero-grid{grid-template-columns:1fr}.hero-art{display:none}.rings{opacity:.3;right:-260px}}
+
+/* ---------- STRIP ---------- */
+.strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:22px 0;margin-top:26px}
+.strip-inner{display:flex;gap:38px;align-items:center;justify-content:center;flex-wrap:wrap;color:var(--muted);font-weight:500;font-size:.95rem}
+.strip-inner b{color:var(--ink);font-family:var(--display)}
+
+/* ---------- SECTIONS ---------- */
+section{padding:84px 0;position:relative;z-index:2}
+.sec-head{max-width:48ch;margin-bottom:46px}
+.sec-head p{color:var(--muted);font-size:1.1rem;margin-top:14px}
+
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:30px;transition:.3s}
+.card:hover{transform:translateY(-5px);border-color:var(--primary);box-shadow:0 22px 44px -30px rgba(21,33,43,.35)}
+.card .ic{width:50px;height:50px;border-radius:14px;background:var(--tint);display:grid;place-items:center;margin-bottom:18px}
+.card h3{font-size:1.3rem;margin-bottom:10px}
+.card p{color:var(--muted);font-size:.97rem}
+@media(max-width:880px){.grid-3{grid-template-columns:1fr}}
+
+/* compare */
+.compare{background:var(--ink);color:var(--surface);border-radius:26px;padding:54px;position:relative;overflow:hidden}
+.compare h2{color:var(--surface)}
+.compare .eyebrow{color:var(--accent);} /* eyebrow on dark: small label, allowed as a graphic accent */
+.compare .rings-sm{position:absolute;left:-90px;bottom:-120px;width:340px;opacity:.18}
+.cmp-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:34px;position:relative;z-index:2}
+.cmp{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:26px}
+.cmp.win{background:rgba(31,164,99,.18);border-color:var(--primary)}
+.cmp h4{font-size:1rem;opacity:.7;margin-bottom:12px}
+.cmp .big{font-family:var(--display);font-weight:700;font-size:2.6rem;line-height:1}
+.cmp ul{list-style:none;margin-top:16px;display:flex;flex-direction:column;gap:9px;font-size:.93rem;opacity:.9}
+.cmp li::before{content:"→ ";color:var(--primary)}
+.cmp.win li::before{color:var(--accent)}
+@media(max-width:760px){.compare{padding:30px}.cmp-grid{grid-template-columns:1fr}}
+
+/* process */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.step{padding:30px 28px;border-left:1px solid var(--line)}
+.step:first-child{border-left:none;padding-left:0}
+.step .n{font-family:var(--display);font-weight:700;font-size:.9rem;color:var(--primary);letter-spacing:.08em}
+.step h3{font-size:1.25rem;margin:12px 0 8px}
+.step p{color:var(--muted);font-size:.95rem}
+@media(max-width:760px){.steps{grid-template-columns:1fr}.step{border-left:none;border-top:1px solid var(--line);padding-left:0}.step:first-child{border-top:none}}
+
+/* pricing */
+#pricing{background:var(--tint)}
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.plan{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:32px;display:flex;flex-direction:column;position:relative}
+.plan.feature{border-color:var(--primary);box-shadow:0 24px 50px -28px rgba(31,164,99,.6)}
+.plan .tag{font-family:var(--display);font-weight:600;font-size:1.1rem}
+.plan .amt{font-family:var(--display);font-weight:700;font-size:2.7rem;margin:12px 0 2px;line-height:1}
+.plan .amt small{font-size:.95rem;font-weight:500;color:var(--muted)}
+.plan .sub{color:var(--muted);font-size:.92rem}
+.plan ul{list-style:none;margin:22px 0;display:flex;flex-direction:column;gap:11px;font-size:.95rem;flex:1}
+.plan li{display:flex;gap:9px;align-items:flex-start}
+.plan li::before{content:"";flex:none;width:18px;height:18px;margin-top:2px;border-radius:50%;background:var(--tint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%231FA463' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center/12px no-repeat}
+.badge{position:absolute;top:-13px;left:32px;background:var(--accent);color:var(--ink);font-family:var(--display);font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.32rem .75rem;border-radius:999px}
+.care-strip{margin-top:22px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px 28px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.care-strip b{font-family:var(--display)}
+@media(max-width:880px){.price-grid{grid-template-columns:1fr}}
+
+/* cta */
+.cta-band{text-align:center;padding:90px 0}
+.cta-band h2{margin-bottom:16px}
+.cta-band p{color:var(--muted);font-size:1.15rem;max-width:50ch;margin:0 auto 28px}
+
+/* footer */
+footer{background:var(--ink);color:var(--surface);padding:58px 0 28px}
+.foot-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,.12)}
+footer .brand{color:var(--surface)}
+.foot-links{display:flex;gap:48px;flex-wrap:wrap}
+.foot-col h5{font-family:var(--display);font-weight:600;margin-bottom:12px;font-size:.95rem}
+.foot-col a{display:block;color:#b7c3bb;font-size:.92rem;margin-bottom:8px;transition:color .2s}
+.foot-col a:hover{color:var(--surface)}
+.foot-bottom{padding-top:20px;font-size:.85rem;color:#93a299;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ============================================================
+   CHAT WIDGET
+   ============================================================ */
+#chatLauncher{position:fixed;bottom:24px;right:24px;z-index:100;width:60px;height:60px;border-radius:50%;border:none;cursor:pointer;background:var(--primary);box-shadow:0 12px 30px -8px var(--primary);transition:transform .25s;display:grid;place-items:center}
+#chatLauncher:hover{transform:scale(1.08);background:var(--primary-d)}
+#chatPanel{position:fixed;bottom:96px;right:24px;z-index:100;width:372px;max-width:calc(100vw - 32px);height:530px;max-height:calc(100vh - 130px);background:var(--surface);border:1px solid var(--line);border-radius:20px;box-shadow:0 30px 70px -20px rgba(21,33,43,.45);display:none;flex-direction:column;overflow:hidden}
+#chatPanel.open{display:flex;animation:pop .25s ease}
+@keyframes pop{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.chat-head{background:var(--ink);color:var(--surface);padding:15px 18px;display:flex;align-items:center;gap:11px}
+.chat-head .dot{width:9px;height:9px;border-radius:50%;background:var(--primary);box-shadow:0 0 0 3px rgba(31,164,99,.3)}
+.chat-head b{font-family:var(--display);font-weight:600;font-size:1rem}
+.chat-head span{font-size:.78rem;color:#b7c3bb}
+.chat-body{flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:12px}
+.msg{padding:10px 14px;border-radius:14px;font-size:.92rem;max-width:86%;line-height:1.5;white-space:pre-wrap}
+.msg.bot{background:var(--tint);align-self:flex-start;border-bottom-left-radius:4px}
+.msg.user{background:var(--primary);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.msg.typing{color:var(--muted);font-style:italic}
+.chat-foot{border-top:1px solid var(--line);padding:12px;display:flex;gap:8px}
+.chat-foot input{flex:1;border:1px solid var(--line);background:#fff;border-radius:999px;padding:.7rem 1rem;font-family:var(--body);font-size:.95rem;outline:none}
+.chat-foot input:focus{border-color:var(--primary)}
+.chat-foot button{background:var(--primary);color:#fff;border:none;border-radius:50%;width:42px;height:42px;cursor:pointer;font-size:1.1rem;flex:none}
+.suggest{display:flex;gap:7px;flex-wrap:wrap;padding:0 18px 12px}
+.suggest button{font-size:.8rem;background:#fff;border:1px solid var(--line);border-radius:999px;padding:.4rem .8rem;cursor:pointer;color:var(--muted);transition:.2s;font-family:var(--body)}
+.suggest button:hover{border-color:var(--primary);color:var(--ink)}
+</style>
+</head>
+<body>
+
+<!-- ===================== NAV ===================== -->
+<nav id="nav">
+  <a class="brand" href="#top">
+    <svg class="mark" width="30" height="30" viewBox="0 0 157 157" aria-hidden="true"><circle cx="78.74" cy="78.74" r="42.41" fill="none" stroke="#1FA463" stroke-width="16.12"/><circle cx="78.74" cy="78.74" r="17.81" fill="#FFD23F"/></svg>
+    Open Sign Studio
+  </a>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#why">Why us</a>
+    <a href="#process">How it works</a>
+    <a href="#pricing">Pricing</a>
+  </div>
+  <div class="nav-cta">
+    <a href="#contact" class="btn btn-ghost">Say hello</a>
+    <a href="#contact" class="btn btn-primary">Book a free call</a>
+  </div>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<header id="top" class="hero">
+  <!-- open-sign target motif -->
+  <svg class="rings" viewBox="0 0 600 600" aria-hidden="true">
+    <circle cx="300" cy="300" r="270" fill="none" stroke="#1FA463" stroke-width="2" opacity=".25"/>
+    <circle cx="300" cy="300" r="200" fill="none" stroke="#1FA463" stroke-width="2" opacity=".4"/>
+    <circle cx="300" cy="300" r="130" fill="none" stroke="#1FA463" stroke-width="26"/>
+    <circle cx="300" cy="300" r="54" fill="#FFD23F"/>
+  </svg>
+
+  <div class="wrap hero-grid">
+    <div class="reveal in">
+      <p class="eyebrow">Modern AI, made affordable</p>
+      <h1>The kind of AI that keeps you <span class="mark-hl">always open</span>.</h1>
+      <p class="lede">I help small businesses add practical AI — chatbots, automation, and modern websites. Premium results, honest prices, no agency markup.</p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-primary">Book a free call →</a>
+        <a href="#services" class="btn btn-ghost">See what I do</a>
+      </div>
+      <div class="trust">
+        <div><b>48hr</b> typical turnaround</div>
+        <div><b>$0</b> discovery call</div>
+        <div><b>$750</b> to get started</div>
+      </div>
+    </div>
+    <div class="hero-art reveal in">
+      <span class="pill">Live AI assistant ↘</span>
+      <div class="card-float">
+        <div class="card-head"><span class="dot-live"></span> Open Sign Studio · AI assistant</div>
+        <div class="chat-prev">
+          <div class="bubble bot">Hi! I'm the Open Sign Studio assistant. What can I help you with?</div>
+          <div class="bubble you">Do you build chatbots for small businesses?</div>
+          <div class="bubble bot">We do — starting at just $750, set up and trained on your business. Want me to walk you through it?</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="strip">
+    <div class="wrap strip-inner">
+      <span><b>Built for</b> the businesses big agencies overlook</span><span>·</span><span>Clinics</span><span>·</span><span>Retail</span><span>·</span><span>Service pros</span><span>·</span><span>Local shops</span>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== SERVICES ===================== -->
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">What I do</p>
+      <h2>AI that earns its keep.</h2>
+      <p>No buzzwords — just tools that save you time, capture more customers, and make your business feel modern.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card reveal">
+        <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#15784A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.7A8.38 8.38 0 0 1 4 11.5 8.5 8.5 0 0 1 12.5 3 8.38 8.38 0 0 1 21 11.5z"/></svg></div>
+        <h3>AI Chatbots</h3><p>A friendly assistant on your site that answers questions, books appointments, and never clocks out.</p>
+      </div>
+      <div class="card reveal">
+        <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#15784A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+        <h3>Workflow Automation</h3><p>Stop doing the same task twice. I connect your tools so the busywork runs itself.</p>
+      </div>
+      <div class="card reveal">
+        <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#15784A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+        <h3>Modern Websites</h3><p>Fast, clean, mobile-ready sites with AI built in — designed to turn visitors into customers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== WHY / AFFORDABLE ===================== -->
+<section id="why">
+  <div class="wrap">
+    <div class="compare reveal">
+      <svg class="rings-sm" viewBox="0 0 157 157" aria-hidden="true"><circle cx="78.74" cy="78.74" r="42.41" fill="none" stroke="#FBFBF7" stroke-width="16.12"/><circle cx="78.74" cy="78.74" r="17.81" fill="#FFD23F"/></svg>
+      <p class="eyebrow">Why choose me</p>
+      <h2>Agency quality. Honest pricing.</h2>
+      <div class="cmp-grid">
+        <div class="cmp">
+          <h4>Typical agency</h4>
+          <div class="big">$5,000+</div>
+          <ul><li>Long contracts &amp; lock-in</li><li>Months-long timelines</li><li>You're one of many clients</li></ul>
+        </div>
+        <div class="cmp win">
+          <h4>Open Sign Studio</h4>
+          <div class="big">From $750</div>
+          <ul><li>One project at a time, no lock-in</li><li>Live in days, not months</li><li>You work directly with me</li></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PROCESS ===================== -->
+<section id="process">
+  <div class="wrap">
+    <div class="sec-head reveal"><p class="eyebrow">How it works</p><h2>Simple, start to finish.</h2></div>
+    <div class="steps">
+      <div class="step reveal"><div class="n">01</div><h3>Free discovery call</h3><p>We talk through your goals and where AI can actually help. No pressure, no jargon.</p></div>
+      <div class="step reveal"><div class="n">02</div><h3>I build it</h3><p>You get a clear, flat quote and a fast turnaround. I handle the tech so you don't have to.</p></div>
+      <div class="step reveal"><div class="n">03</div><h3>Launch &amp; support</h3><p>Your AI goes live, and I'm here to tune and improve it as your business grows.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PRICING ===================== -->
+<section id="pricing">
+  <div class="wrap">
+    <div class="sec-head reveal"><p class="eyebrow">Pricing</p><h2>Clear pricing, no surprises.</h2><p>Flat project fees — below agency and freelancer rates, with nothing hidden.</p></div>
+    <div class="price-grid">
+      <div class="plan reveal">
+        <div class="tag">The Welcome Mat</div>
+        <div class="amt">$750<small> one-time</small></div>
+        <div class="sub">Your first AI tool, live and working.</div>
+        <ul><li>1 AI chatbot, trained on your business</li><li>Set up &amp; embedded on your site</li><li>2 rounds of revisions</li><li>Email support</li></ul>
+        <a href="#contact" class="btn btn-ghost">Get started</a>
+      </div>
+      <div class="plan feature reveal">
+        <span class="badge">Most popular</span>
+        <div class="tag">The Storefront</div>
+        <div class="amt">$2,200<small> one-time</small></div>
+        <div class="sub">A modern website with AI built in.</div>
+        <ul><li>5-page mobile-ready website</li><li>AI chatbot included &amp; integrated</li><li>Brand-matched design</li><li>Priority support</li></ul>
+        <a href="#contact" class="btn btn-primary">Choose Storefront</a>
+      </div>
+      <div class="plan reveal">
+        <div class="tag">The Full Window</div>
+        <div class="amt">$3,200<small> one-time</small></div>
+        <div class="sub">Website + chatbot + automation.</div>
+        <ul><li>Everything in The Storefront</li><li>1 workflow automation</li><li>Extra automations $600 each</li><li>Custom AI training</li></ul>
+        <a href="#contact" class="btn btn-ghost">Choose Full Window</a>
+      </div>
+    </div>
+    <div class="care-strip reveal">
+      <div><b>Keep the Sign Lit</b> — ongoing care from <b>$89/mo</b>: hosting, monitoring, AI usage, and small edits. Cancel anytime.</div>
+      <a href="#contact" class="btn btn-ghost">Add care plan</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CTA ===================== -->
+<section id="contact" class="cta-band">
+  <div class="wrap reveal">
+    <p class="eyebrow">Let's talk</p>
+    <h2>Ready to flip your sign to <span class="mark-hl">AI</span>?</h2>
+    <p>Book a free 15-minute call, or just ask the AI assistant in the corner a question. →</p>
+    <a href="mailto:hello@opensignstudio.com" class="btn btn-primary">Book your free call</a>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="#top">
+          <svg class="mark" width="28" height="28" viewBox="0 0 157 157" aria-hidden="true"><circle cx="78.74" cy="78.74" r="42.41" fill="none" stroke="#FBFBF7" stroke-width="16.12"/><circle cx="78.74" cy="78.74" r="17.81" fill="#FFD23F"/></svg>
+          Open Sign Studio
+        </a>
+        <p style="color:#b7c3bb;max-width:32ch;margin-top:12px;font-size:.92rem">Modern AI, made affordable — for the small businesses the big agencies overlook.</p>
+      </div>
+      <div class="foot-links">
+        <div class="foot-col"><h5>Services</h5><a href="#services">AI Chatbots</a><a href="#services">Automation</a><a href="#services">Websites</a></div>
+        <div class="foot-col"><h5>Studio</h5><a href="#why">Why us</a><a href="#process">How it works</a><a href="#pricing">Pricing</a></div>
+        <div class="foot-col"><h5>Contact</h5><a href="mailto:hello@opensignstudio.com">hello@opensignstudio.com</a><a href="#contact">Book a call</a></div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="yr"></span> Open Sign Studio. All rights reserved.</span>
+      <span>Always open ✦</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===================== CHAT WIDGET ===================== -->
+<button id="chatLauncher" aria-label="Open chat">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.7A8.38 8.38 0 0 1 4 11.5 8.5 8.5 0 0 1 12.5 3 8.38 8.38 0 0 1 21 11.5z"/></svg>
+</button>
+<div id="chatPanel">
+  <div class="chat-head"><span class="dot"></span><div><b>Open Sign Studio</b><br><span>AI assistant · replies instantly</span></div></div>
+  <div class="chat-body" id="chatBody">
+    <div class="msg bot">👋 Hi there! I'm the Open Sign Studio assistant. Ask me about services, pricing, or how AI could help your business.</div>
+  </div>
+  <div class="suggest" id="suggest">
+    <button>What do you offer?</button>
+    <button>How much is a chatbot?</button>
+    <button>How fast can you build it?</button>
+  </div>
+  <div class="chat-foot">
+    <input id="chatInput" type="text" placeholder="Type a message…" autocomplete="off" />
+    <button id="chatSend" aria-label="Send">↑</button>
+  </div>
+</div>
+
+<script>
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('nav-scrolled',scrollY>20));
+document.getElementById('yr').textContent=new Date().getFullYear();
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.14});
+document.querySelectorAll('.reveal:not(.in)').forEach(el=>io.observe(el));
+
+/* ============================================================
+   CHATBOT
+   ------------------------------------------------------------
+   Works as-is inside this Claude preview (the key is handled here).
+   To deploy on your own site / GitHub Pages, point API_ENDPOINT at
+   your serverless proxy (e.g. your Cloudflare Worker) so your real
+   API key never reaches the browser — same pattern as your ROI
+   calculator.
+   ============================================================ */
+const API_ENDPOINT = "https://api.anthropic.com/v1/messages"; // ← swap to your proxy URL for production
+
+const SYSTEM_PROMPT = `You are the friendly AI assistant for "Open Sign Studio", a one-person studio that builds affordable, modern AI for small businesses. Tagline: "Modern AI, made affordable."
+
+What Open Sign Studio offers:
+- AI chatbots for websites (answer questions, book appointments, capture leads)
+- Workflow automation (connecting tools so repetitive busywork runs itself)
+- Modern, mobile-ready websites with AI built in
+
+Pricing (flat, one-time project fees — kept below agency and freelancer rates):
+- The Welcome Mat — $750: 1 AI chatbot trained on the business, set up & embedded, 2 revisions, email support.
+- The Storefront — $2,200 (most popular): 5-page mobile-ready website + integrated AI chatbot + brand-matched design + priority support.
+- The Full Window — $3,200: everything in The Storefront, plus 1 workflow automation and custom AI training. Extra automations are $600 each.
+- Keep the Sign Lit — from $89/month: ongoing care (hosting, monitoring, AI usage, small edits), cancel anytime.
+- The discovery call is free. Typical turnaround is around 48 hours.
+
+Tone: warm, plain-spoken, encouraging, zero jargon. Keep answers short (2-4 sentences).
+Goal: answer the visitor's question, then gently invite them to book a free call or leave their email. Never invent services or prices beyond those listed; if you're unsure, suggest booking the free discovery call.`;
+
+const body=document.getElementById('chatBody');
+const input=document.getElementById('chatInput');
+document.getElementById('chatLauncher').onclick=()=>{const p=document.getElementById('chatPanel');p.classList.toggle('open');if(p.classList.contains('open'))input.focus();};
+
+let history=[];
+function addMsg(text,who){const d=document.createElement('div');d.className='msg '+who;d.textContent=text;body.appendChild(d);body.scrollTop=body.scrollHeight;return d;}
+
+async function send(text){
+  text=(text||input.value).trim();
+  if(!text)return;
+  input.value='';
+  document.getElementById('suggest').style.display='none';
+  addMsg(text,'user');
+  history.push({role:'user',content:text});
+  const typing=addMsg('typing…','bot typing');
+  try{
+    const res=await fetch(API_ENDPOINT,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:SYSTEM_PROMPT,messages:history})
+    });
+    const data=await res.json();
+    const reply=(data.content||[]).filter(b=>b.type==='text').map(b=>b.text).join('\n').trim()
+      || "Sorry, I didn't catch that — could you rephrase?";
+    typing.remove();addMsg(reply,'bot');history.push({role:'assistant',content:reply});
+  }catch(err){
+    typing.remove();
+    addMsg("I'm having trouble connecting right now. Once this is live with your proxy I'll reply instantly — or email hello@opensignstudio.com.",'bot');
+    console.error(err);
+  }
+}
+document.getElementById('chatSend').onclick=()=>send();
+input.addEventListener('keydown',e=>{if(e.key==='Enter')send();});
+document.querySelectorAll('#suggest button').forEach(b=>b.onclick=()=>send(b.textContent));
+</script>
+</body>
+</html>
