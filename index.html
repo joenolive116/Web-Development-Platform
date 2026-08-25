@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Open Sign Studio — Modern AI, made affordable</title>
-<meta name="description" content="Open Sign Studio builds affordable, modern AI for small businesses: chatbots, automation, and websites — without the agency price tag." />
+<title>Open Sign Studio — Affordable websites for small businesses</title>
+<meta name="description" content="Open Sign Studio builds clean, modern websites for small businesses for $499, with simple $29/month care and hosting." />
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22512%22%20height%3D%22512%22%20viewBox%3D%220%200%20512%20512%22%3E%3Crect%20width%3D%22512%22%20height%3D%22512%22%20rx%3D%22113%22%20fill%3D%22%231FA463%22/%3E%3Ccircle%20cx%3D%22256.00%22%20cy%3D%22256.00%22%20r%3D%2298.96%22%20fill%3D%22none%22%20stroke%3D%22%23FBFBF7%22%20stroke-width%3D%2237.60%22/%3E%3Ccircle%20cx%3D%22256.00%22%20cy%3D%22256.00%22%20r%3D%2241.56%22%20fill%3D%22%23FFD23F%22/%3E%3C/svg%3E" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -169,30 +169,15 @@ footer .brand{color:var(--surface)}
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
 .reveal.in{opacity:1;transform:none}
 
-/* ============================================================
-   CHAT WIDGET
-   ============================================================ */
-#chatLauncher{position:fixed;bottom:24px;right:24px;z-index:100;width:60px;height:60px;border-radius:50%;border:none;cursor:pointer;background:var(--primary);box-shadow:0 12px 30px -8px var(--primary);transition:transform .25s;display:grid;place-items:center}
-#chatLauncher:hover{transform:scale(1.08);background:var(--primary-d)}
-#chatPanel{position:fixed;bottom:96px;right:24px;z-index:100;width:372px;max-width:calc(100vw - 32px);height:530px;max-height:calc(100vh - 130px);background:var(--surface);border:1px solid var(--line);border-radius:20px;box-shadow:0 30px 70px -20px rgba(21,33,43,.45);display:none;flex-direction:column;overflow:hidden}
-#chatPanel.open{display:flex;animation:pop .25s ease}
-@keyframes pop{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-.chat-head{background:var(--ink);color:var(--surface);padding:15px 18px;display:flex;align-items:center;gap:11px}
-.chat-head .dot{width:9px;height:9px;border-radius:50%;background:var(--primary);box-shadow:0 0 0 3px rgba(31,164,99,.3)}
-.chat-head b{font-family:var(--display);font-weight:600;font-size:1rem}
-.chat-head span{font-size:.78rem;color:#b7c3bb}
-.chat-body{flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:12px}
-.msg{padding:10px 14px;border-radius:14px;font-size:.92rem;max-width:86%;line-height:1.5;white-space:pre-wrap}
-.msg.bot{background:var(--tint);align-self:flex-start;border-bottom-left-radius:4px}
-.msg.user{background:var(--primary);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
-.msg.typing{color:var(--muted);font-style:italic}
-.chat-foot{border-top:1px solid var(--line);padding:12px;display:flex;gap:8px}
-.chat-foot input{flex:1;border:1px solid var(--line);background:#fff;border-radius:999px;padding:.7rem 1rem;font-family:var(--body);font-size:.95rem;outline:none}
-.chat-foot input:focus{border-color:var(--primary)}
-.chat-foot button{background:var(--primary);color:#fff;border:none;border-radius:50%;width:42px;height:42px;cursor:pointer;font-size:1.1rem;flex:none}
-.suggest{display:flex;gap:7px;flex-wrap:wrap;padding:0 18px 12px}
-.suggest button{font-size:.8rem;background:#fff;border:1px solid var(--line);border-radius:999px;padding:.4rem .8rem;cursor:pointer;color:var(--muted);transition:.2s;font-family:var(--body)}
-.suggest button:hover{border-color:var(--primary);color:var(--ink)}
+/* ---------- lead form ---------- */
+.lead-form{max-width:760px;margin:32px auto 0;text-align:left;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.lead-form label{display:flex;flex-direction:column;gap:7px;font-family:var(--display);font-weight:600;font-size:.9rem;margin-bottom:18px}
+.lead-form input,.lead-form textarea{width:100%;border:1px solid var(--line);border-radius:12px;background:var(--surface);padding:.85rem 1rem;font-family:var(--body);font-size:1rem;color:var(--ink);outline:none}
+.lead-form input:focus,.lead-form textarea:focus{border-color:var(--primary);box-shadow:0 0 0 3px var(--tint)}
+.lead-form textarea{resize:vertical}
+.form-status{margin-top:14px!important;margin-bottom:0!important;font-size:.95rem!important}
+@media(max-width:680px){.form-grid{grid-template-columns:1fr}.lead-form{padding:22px}}
 </style>
 </head>
 <body>
@@ -227,27 +212,27 @@ footer .brand{color:var(--surface)}
 
   <div class="wrap hero-grid">
     <div class="reveal in">
-      <p class="eyebrow">Modern AI, made affordable</p>
-      <h1>The kind of AI that keeps you <span class="mark-hl">always open</span>.</h1>
-      <p class="lede">I help small businesses add practical AI — chatbots, automation, and modern websites. Premium results, honest prices, no agency markup.</p>
+      <p class="eyebrow">Modern websites, made affordable</p>
+      <h1>A better website without the <span class="mark-hl">agency price</span>.</h1>
+      <p class="lede">I build clean, modern websites for local small businesses — fast, mobile-friendly, and simple to maintain. One clear price, no agency markup.</p>
       <div class="hero-cta">
         <a href="#contact" class="btn btn-primary">Book a free call →</a>
         <a href="#services" class="btn btn-ghost">See what I do</a>
       </div>
       <div class="trust">
-        <div><b>48hr</b> typical turnaround</div>
+        <div><b>Fast</b> turnaround</div>
         <div><b>$0</b> discovery call</div>
-        <div><b>$750</b> to get started</div>
+        <div><b>$499</b> website build</div>
       </div>
     </div>
     <div class="hero-art reveal in">
-      <span class="pill">Live AI assistant ↘</span>
+      <span class="pill">Simple. Clean. Local. ↘</span>
       <div class="card-float">
-        <div class="card-head"><span class="dot-live"></span> Open Sign Studio · AI assistant</div>
+        <div class="card-head"><span class="dot-live"></span> Open Sign Studio · Website package</div>
         <div class="chat-prev">
-          <div class="bubble bot">Hi! I'm the Open Sign Studio assistant. What can I help you with?</div>
-          <div class="bubble you">Do you build chatbots for small businesses?</div>
-          <div class="bubble bot">We do — starting at just $750, set up and trained on your business. Want me to walk you through it?</div>
+          <div class="bubble bot">Professional small-business website</div>
+          <div class="bubble you">Up to 5 core pages</div>
+          <div class="bubble bot">$499 build + $29/month care &amp; hosting</div>
         </div>
       </div>
     </div>
@@ -265,21 +250,21 @@ footer .brand{color:var(--surface)}
   <div class="wrap">
     <div class="sec-head reveal">
       <p class="eyebrow">What I do</p>
-      <h2>AI that earns its keep.</h2>
-      <p>No buzzwords — just tools that save you time, capture more customers, and make your business feel modern.</p>
+      <h2>Websites that make your business look legit.</h2>
+      <p>No complicated packages or unnecessary add-ons — just a clean website that works on phones, loads fast, and makes it easy for customers to contact you.</p>
     </div>
     <div class="grid-3">
       <div class="card reveal">
-        <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#15784A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.7A8.38 8.38 0 0 1 4 11.5 8.5 8.5 0 0 1 12.5 3 8.38 8.38 0 0 1 21 11.5z"/></svg></div>
-        <h3>AI Chatbots</h3><p>A friendly assistant on your site that answers questions, books appointments, and never clocks out.</p>
-      </div>
-      <div class="card reveal">
-        <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#15784A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
-        <h3>Workflow Automation</h3><p>Stop doing the same task twice. I connect your tools so the busywork runs itself.</p>
-      </div>
-      <div class="card reveal">
         <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#15784A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
-        <h3>Modern Websites</h3><p>Fast, clean, mobile-ready sites with AI built in — designed to turn visitors into customers.</p>
+        <h3>Custom Website</h3><p>A clean, professional website built around your business, services, brand, and contact information.</p>
+      </div>
+      <div class="card reveal">
+        <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#15784A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="9" y1="18" x2="15" y2="18"/></svg></div>
+        <h3>Mobile Ready</h3><p>Your site is designed to look good and work properly on phones, tablets, and desktop computers.</p>
+      </div>
+      <div class="card reveal">
+        <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#15784A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <h3>Simple Pricing</h3><p>$499 to build the site, then $29/month for hosting, monitoring, technical support, and small edits.</p>
       </div>
     </div>
   </div>
@@ -295,13 +280,13 @@ footer .brand{color:var(--surface)}
       <div class="cmp-grid">
         <div class="cmp">
           <h4>Typical agency</h4>
-          <div class="big">$5,000+</div>
-          <ul><li>Long contracts &amp; lock-in</li><li>Months-long timelines</li><li>You're one of many clients</li></ul>
+          <div class="big">$2,000+</div>
+          <ul><li>Higher upfront costs</li><li>Complicated packages</li><li>Slow changes and handoffs</li></ul>
         </div>
         <div class="cmp win">
           <h4>Open Sign Studio</h4>
-          <div class="big">From $750</div>
-          <ul><li>One project at a time, no lock-in</li><li>Live in days, not months</li><li>You work directly with me</li></ul>
+          <div class="big">$499</div>
+          <ul><li>Clear one-time build price</li><li>$29/month care &amp; hosting</li><li>You work directly with me</li></ul>
         </div>
       </div>
     </div>
@@ -313,9 +298,9 @@ footer .brand{color:var(--surface)}
   <div class="wrap">
     <div class="sec-head reveal"><p class="eyebrow">How it works</p><h2>Simple, start to finish.</h2></div>
     <div class="steps">
-      <div class="step reveal"><div class="n">01</div><h3>Free discovery call</h3><p>We talk through your goals and where AI can actually help. No pressure, no jargon.</p></div>
-      <div class="step reveal"><div class="n">02</div><h3>I build it</h3><p>You get a clear, flat quote and a fast turnaround. I handle the tech so you don't have to.</p></div>
-      <div class="step reveal"><div class="n">03</div><h3>Launch &amp; support</h3><p>Your AI goes live, and I'm here to tune and improve it as your business grows.</p></div>
+      <div class="step reveal"><div class="n">01</div><h3>Tell me about your business</h3><p>Send me your services, logo, photos, colors, and any websites you like. We keep the kickoff simple.</p></div>
+      <div class="step reveal"><div class="n">02</div><h3>I build your site</h3><p>I design the pages, make them mobile-friendly, and send you a preview so you can request revisions.</p></div>
+      <div class="step reveal"><div class="n">03</div><h3>Launch &amp; keep it running</h3><p>I connect your domain, launch the website, and handle hosting and basic upkeep for $29/month.</p></div>
     </div>
   </div>
 </section>
@@ -323,45 +308,50 @@ footer .brand{color:var(--surface)}
 <!-- ===================== PRICING ===================== -->
 <section id="pricing">
   <div class="wrap">
-    <div class="sec-head reveal"><p class="eyebrow">Pricing</p><h2>Clear pricing, no surprises.</h2><p>Flat project fees — below agency and freelancer rates, with nothing hidden.</p></div>
-    <div class="price-grid">
-      <div class="plan reveal">
-        <div class="tag">The Welcome Mat</div>
-        <div class="amt">$750<small> one-time</small></div>
-        <div class="sub">Your first AI tool, live and working.</div>
-        <ul><li>1 AI chatbot, trained on your business</li><li>Set up &amp; embedded on your site</li><li>2 rounds of revisions</li><li>Email support</li></ul>
-        <a href="#contact" class="btn btn-ghost">Get started</a>
-      </div>
+    <div class="sec-head reveal"><p class="eyebrow">Pricing</p><h2>One website. One clear price.</h2><p>Built for small local businesses that need a professional online presence without spending thousands.</p></div>
+    <div class="price-grid" style="grid-template-columns:minmax(0,620px);justify-content:center">
       <div class="plan feature reveal">
-        <span class="badge">Most popular</span>
-        <div class="tag">The Storefront</div>
-        <div class="amt">$2,200<small> one-time</small></div>
-        <div class="sub">A modern website with AI built in.</div>
-        <ul><li>5-page mobile-ready website</li><li>AI chatbot included &amp; integrated</li><li>Brand-matched design</li><li>Priority support</li></ul>
-        <a href="#contact" class="btn btn-primary">Choose Storefront</a>
-      </div>
-      <div class="plan reveal">
-        <div class="tag">The Full Window</div>
-        <div class="amt">$3,200<small> one-time</small></div>
-        <div class="sub">Website + chatbot + automation.</div>
-        <ul><li>Everything in The Storefront</li><li>1 workflow automation</li><li>Extra automations $600 each</li><li>Custom AI training</li></ul>
-        <a href="#contact" class="btn btn-ghost">Choose Full Window</a>
+        <span class="badge">Simple website package</span>
+        <div class="tag">Small Business Website</div>
+        <div class="amt">$499<small> one-time</small></div>
+        <div class="sub">Everything you need to get a clean, professional site online.</div>
+        <ul>
+          <li>Up to 5 core pages</li>
+          <li>Mobile-friendly custom design</li>
+          <li>Contact / lead form</li>
+          <li>Domain connection &amp; SSL setup</li>
+          <li>2 rounds of revisions</li>
+          <li>Basic on-page SEO setup</li>
+        </ul>
+        <a href="#contact" class="btn btn-primary">Start my website</a>
       </div>
     </div>
     <div class="care-strip reveal">
-      <div><b>Keep the Sign Lit</b> — ongoing care from <b>$89/mo</b>: hosting, monitoring, AI usage, and small edits. Cancel anytime.</div>
-      <a href="#contact" class="btn btn-ghost">Add care plan</a>
+      <div><b>Website Care — $29/month</b>: hosting, uptime monitoring, technical support, code backups, and reasonable small text/photo edits. Cancel anytime.</div>
+      <a href="#contact" class="btn btn-ghost">Get started</a>
     </div>
   </div>
 </section>
 
-<!-- ===================== CTA ===================== -->
+<!-- ===================== CTA / CONTACT FORM ===================== -->
 <section id="contact" class="cta-band">
   <div class="wrap reveal">
-    <p class="eyebrow">Let's talk</p>
-    <h2>Ready to flip your sign to <span class="mark-hl">AI</span>?</h2>
-    <p>Book a free 15-minute call, or just ask the AI assistant in the corner a question. →</p>
-    <a href="mailto:hello@opensignstudio.com" class="btn btn-primary">Book your free call</a>
+    <p class="eyebrow">Let's build it</p>
+    <h2>Need a better <span class="mark-hl">website</span>?</h2>
+    <p>Tell me a little about your business and I’ll reach out about your $499 website.</p>
+
+    <form id="leadForm" class="lead-form" method="POST" target="leadFrame" action="YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL">
+      <div class="form-grid">
+        <label>Name<input type="text" name="name" required></label>
+        <label>Business name<input type="text" name="business" required></label>
+        <label>Email<input type="email" name="email" required></label>
+        <label>Phone<input type="tel" name="phone"></label>
+      </div>
+      <label>What do you need?<textarea name="message" rows="5" placeholder="Tell me about your business and current website..."></textarea></label>
+      <button type="submit" class="btn btn-primary">Send my info →</button>
+      <p id="formStatus" class="form-status" aria-live="polite"></p>
+    </form>
+    <iframe name="leadFrame" id="leadFrame" style="display:none"></iframe>
   </div>
 </section>
 
@@ -374,10 +364,10 @@ footer .brand{color:var(--surface)}
           <svg class="mark" width="28" height="28" viewBox="0 0 157 157" aria-hidden="true"><circle cx="78.74" cy="78.74" r="42.41" fill="none" stroke="#FBFBF7" stroke-width="16.12"/><circle cx="78.74" cy="78.74" r="17.81" fill="#FFD23F"/></svg>
           Open Sign Studio
         </a>
-        <p style="color:#b7c3bb;max-width:32ch;margin-top:12px;font-size:.92rem">Modern AI, made affordable — for the small businesses the big agencies overlook.</p>
+        <p style="color:#b7c3bb;max-width:32ch;margin-top:12px;font-size:.92rem">Modern websites, made affordable — for the small businesses the big agencies overlook.</p>
       </div>
       <div class="foot-links">
-        <div class="foot-col"><h5>Services</h5><a href="#services">AI Chatbots</a><a href="#services">Automation</a><a href="#services">Websites</a></div>
+        <div class="foot-col"><h5>Services</h5><a href="#services">Small Business Websites</a><a href="#pricing">Website Care</a><a href="#contact">Contact</a></div>
         <div class="foot-col"><h5>Studio</h5><a href="#why">Why us</a><a href="#process">How it works</a><a href="#pricing">Pricing</a></div>
         <div class="foot-col"><h5>Contact</h5><a href="mailto:hello@opensignstudio.com">hello@opensignstudio.com</a><a href="#contact">Book a call</a></div>
       </div>
@@ -389,26 +379,6 @@ footer .brand{color:var(--surface)}
   </div>
 </footer>
 
-<!-- ===================== CHAT WIDGET ===================== -->
-<button id="chatLauncher" aria-label="Open chat">
-  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.7A8.38 8.38 0 0 1 4 11.5 8.5 8.5 0 0 1 12.5 3 8.38 8.38 0 0 1 21 11.5z"/></svg>
-</button>
-<div id="chatPanel">
-  <div class="chat-head"><span class="dot"></span><div><b>Open Sign Studio</b><br><span>AI assistant · replies instantly</span></div></div>
-  <div class="chat-body" id="chatBody">
-    <div class="msg bot">👋 Hi there! I'm the Open Sign Studio assistant. Ask me about services, pricing, or how AI could help your business.</div>
-  </div>
-  <div class="suggest" id="suggest">
-    <button>What do you offer?</button>
-    <button>How much is a chatbot?</button>
-    <button>How fast can you build it?</button>
-  </div>
-  <div class="chat-foot">
-    <input id="chatInput" type="text" placeholder="Type a message…" autocomplete="off" />
-    <button id="chatSend" aria-label="Send">↑</button>
-  </div>
-</div>
-
 <script>
 const nav=document.getElementById('nav');
 addEventListener('scroll',()=>nav.classList.toggle('nav-scrolled',scrollY>20));
@@ -416,68 +386,18 @@ document.getElementById('yr').textContent=new Date().getFullYear();
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.14});
 document.querySelectorAll('.reveal:not(.in)').forEach(el=>io.observe(el));
 
-/* ============================================================
-   CHATBOT
-   ------------------------------------------------------------
-   Works as-is inside this Claude preview (the key is handled here).
-   To deploy on your own site / GitHub Pages, point API_ENDPOINT at
-   your serverless proxy (e.g. your Cloudflare Worker) so your real
-   API key never reaches the browser — same pattern as your ROI
-   calculator.
-   ============================================================ */
-const API_ENDPOINT = "https://api.anthropic.com/v1/messages"; // ← swap to your proxy URL for production
-
-const SYSTEM_PROMPT = `You are the friendly AI assistant for "Open Sign Studio", a one-person studio that builds affordable, modern AI for small businesses. Tagline: "Modern AI, made affordable."
-
-What Open Sign Studio offers:
-- AI chatbots for websites (answer questions, book appointments, capture leads)
-- Workflow automation (connecting tools so repetitive busywork runs itself)
-- Modern, mobile-ready websites with AI built in
-
-Pricing (flat, one-time project fees — kept below agency and freelancer rates):
-- The Welcome Mat — $750: 1 AI chatbot trained on the business, set up & embedded, 2 revisions, email support.
-- The Storefront — $2,200 (most popular): 5-page mobile-ready website + integrated AI chatbot + brand-matched design + priority support.
-- The Full Window — $3,200: everything in The Storefront, plus 1 workflow automation and custom AI training. Extra automations are $600 each.
-- Keep the Sign Lit — from $89/month: ongoing care (hosting, monitoring, AI usage, small edits), cancel anytime.
-- The discovery call is free. Typical turnaround is around 48 hours.
-
-Tone: warm, plain-spoken, encouraging, zero jargon. Keep answers short (2-4 sentences).
-Goal: answer the visitor's question, then gently invite them to book a free call or leave their email. Never invent services or prices beyond those listed; if you're unsure, suggest booking the free discovery call.`;
-
-const body=document.getElementById('chatBody');
-const input=document.getElementById('chatInput');
-document.getElementById('chatLauncher').onclick=()=>{const p=document.getElementById('chatPanel');p.classList.toggle('open');if(p.classList.contains('open'))input.focus();};
-
-let history=[];
-function addMsg(text,who){const d=document.createElement('div');d.className='msg '+who;d.textContent=text;body.appendChild(d);body.scrollTop=body.scrollHeight;return d;}
-
-async function send(text){
-  text=(text||input.value).trim();
-  if(!text)return;
-  input.value='';
-  document.getElementById('suggest').style.display='none';
-  addMsg(text,'user');
-  history.push({role:'user',content:text});
-  const typing=addMsg('typing…','bot typing');
-  try{
-    const res=await fetch(API_ENDPOINT,{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:SYSTEM_PROMPT,messages:history})
-    });
-    const data=await res.json();
-    const reply=(data.content||[]).filter(b=>b.type==='text').map(b=>b.text).join('\n').trim()
-      || "Sorry, I didn't catch that — could you rephrase?";
-    typing.remove();addMsg(reply,'bot');history.push({role:'assistant',content:reply});
-  }catch(err){
-    typing.remove();
-    addMsg("I'm having trouble connecting right now. Once this is live with your proxy I'll reply instantly — or email hello@opensignstudio.com.",'bot');
-    console.error(err);
-  }
-}
-document.getElementById('chatSend').onclick=()=>send();
-input.addEventListener('keydown',e=>{if(e.key==='Enter')send();});
-document.querySelectorAll('#suggest button').forEach(b=>b.onclick=()=>send(b.textContent));
+// Google Sheets lead form
+// 1) Deploy the Apps Script shown in the setup instructions as a Web App.
+// 2) Replace YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL in the form action with its /exec URL.
+const leadForm=document.getElementById('leadForm');
+const formStatus=document.getElementById('formStatus');
+leadForm.addEventListener('submit',()=>{
+  formStatus.textContent='Sending…';
+  setTimeout(()=>{
+    formStatus.textContent='Thanks! Your info was sent. I’ll be in touch soon.';
+    leadForm.reset();
+  },900);
+});
 </script>
 </body>
 </html>
