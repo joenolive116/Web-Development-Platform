@@ -340,7 +340,7 @@ footer .brand{color:var(--surface)}
     <h2>Need a better <span class="mark-hl">website</span>?</h2>
     <p>Tell me a little about your business and I’ll reach out about your $499 website.</p>
 
-    <form id="leadForm" class="lead-form" method="POST" target="leadFrame" action="YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL">
+    <form id="leadForm" class="lead-form" method="POST" target="leadFrame" action="https://script.google.com/macros/s/AKfycbwvOXHQRBRt44ynqgHUmjsy8PuFMxWKHW_3WLn0YchDjayC_ynkYybMyjGUNq3EGaZDGw/exec">
       <div class="form-grid">
         <label>Name<input type="text" name="name" required></label>
         <label>Business name<input type="text" name="business" required></label>
@@ -388,7 +388,7 @@ document.querySelectorAll('.reveal:not(.in)').forEach(el=>io.observe(el));
 
 // Google Sheets lead form
 // 1) Deploy the Apps Script shown in the setup instructions as a Web App.
-// 2) Replace YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL in the form action with its /exec URL.
+// 2) Replace https://script.google.com/macros/s/AKfycbwvOXHQRBRt44ynqgHUmjsy8PuFMxWKHW_3WLn0YchDjayC_ynkYybMyjGUNq3EGaZDGw/exec in the form action with its /exec URL.
 const leadForm=document.getElementById('leadForm');
 const formStatus=document.getElementById('formStatus');
 leadForm.addEventListener('submit',()=>{
